@@ -7,6 +7,14 @@
   </header>
   
 
-<app-side-bar class="sidebar " ></app-side-bar>
-<app-quizz-window class = "quizz-window"></app-quizz-window>
+<app-side-bar class="sidebar "  > </app-side-bar>
+
+<ng-template *ngIf="quizzes">
+
+<app-quizz-window class="quizz-window" > </app-quizz-window>
+
+</ng-template>
+
+
+
 </div>
