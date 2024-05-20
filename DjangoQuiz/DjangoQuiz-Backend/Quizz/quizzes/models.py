@@ -11,8 +11,6 @@ class Quiz(models.Model) :
     
 class QuizQuestion(models.Model):
     quiz = models.ForeignKey(Quiz , related_name='quiz_question', on_delete=models.CASCADE)
-    title = models.CharField(max_length=255)
-    description = models.TextField()
     question = models.TextField() 
     option1 = models.CharField(max_length=255) 
     option2 = models.CharField(max_length=255) 

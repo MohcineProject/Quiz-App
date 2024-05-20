@@ -15,7 +15,7 @@ export class QuizServiceService {
   constructor(private httpClient : HttpClient) { }
   
   quizzes : BehaviorSubject<quizz[]> = new BehaviorSubject<quizz[]>([]);
-  selectedQuiz: BehaviorSubject<quizz | null> = new BehaviorSubject<quizz | null>(null);
+  selectedQuiz: BehaviorSubject<number> = new BehaviorSubject<number>(1);
 
   fetchQuizzees() {
     this.httpClient.get<any[]>(this.backendURL).subscribe((quizzes) => this.quizzes.next(quizzes))
@@ -27,12 +27,18 @@ export class QuizServiceService {
 
   }
 
-  selectQuizz(quizz : quizz) {
-    this.selectedQuiz.next(quizz);
+  selectQuizz(quizId : number) {
+    this.selectedQuiz.next(quizId);
+  }
+  getIdObservable(){
+    return this.selectedQuiz.asObservable() ;
   }
 
   getSelectedQuizz() {
-    return this.selectedQuiz.asObservable() ; 
+    const quizId = this.selectedQuiz.getValue();
+    var quiz =  null; 
+    this.httpClient.get<any>(this.backendURL+ quizId.toString()).subscribe(selectedQuiz => quiz = selectedQuiz ) ; 
+    return quiz; 
   }
 
  

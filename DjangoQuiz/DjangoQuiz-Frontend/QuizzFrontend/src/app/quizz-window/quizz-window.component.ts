@@ -4,6 +4,7 @@ import { QuizzAddQuestionComponent } from '../quizz-add-question/quizz-add-quest
 import { QuizzQuestion } from '../interfaces/quizz-question';
 import { QuizServiceService } from '../services/quiz-service.service';
 import { quizz } from '../interfaces/quizz';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-quizz-window',
@@ -14,13 +15,16 @@ import { quizz } from '../interfaces/quizz';
 })
 export class QuizzWindowComponent {
 
+  quizId : number = 1  ; 
   quiz : quizz | null  = null ;
   index : number = 0 
-  constructor(private quizService: QuizServiceService, private cdr: ChangeDetectorRef) { }
+
+  constructor(private quizService: QuizServiceService, private cdr: ChangeDetectorRef, httpClient:HttpClient) { }
   
 
   ngOnInit() {
-  this.quizService.getSelectedQuizz().subscribe(quiz => this.quiz = quiz) ;   
+  this.quizService.  getIdObservable().subscribe(quizId => this.quizId = quizId) ;
+  this.quiz = this.quizService.getSelectedQuizz() ; 
   
   }
   right () {

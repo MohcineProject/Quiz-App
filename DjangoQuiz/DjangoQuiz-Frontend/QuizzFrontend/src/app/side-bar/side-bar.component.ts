@@ -18,9 +18,9 @@ export class SideBarComponent {
     this.quizService.fetchQuizzees().subscribe(quizzes => this.quizzes = quizzes) ; 
   }
 
-  selectQuiz( quiz : quizz){
+  selectQuiz( quizId : number){
 
-      this.quizService.selectQuizz(quiz ) ; 
+      this.quizService.selectQuizz(quizId ) ; 
   }
   
   
