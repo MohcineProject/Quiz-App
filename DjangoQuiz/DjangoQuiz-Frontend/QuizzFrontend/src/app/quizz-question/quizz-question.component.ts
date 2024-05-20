@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { quizz } from '../interfaces/quizz';
+import { QuizzQuestion } from '../interfaces/quizz-question';
 
 @Component({
   selector: 'app-quizz-question',
@@ -8,5 +10,6 @@ import { Component } from '@angular/core';
   styleUrl: './quizz-question.component.scss'
 })
 export class QuizzQuestionComponent {
+  @Input()  question : QuizzQuestion | null = null  ; 
 
 }

@@ -1,13 +1,13 @@
 <div class="fluid-container p-4 m-3 h-100 parent">
 
-
-    <app-quizz-question></app-quizz-question>
-    
+    <div **ngIf="quiz.quizzQuestions[index]">
+        <app-quizz-question [question]="quiz!.quizzQuestions![index]"></app-quizz-question>
+    </div>
 
     <!--  The nav bar to go trought questions :  -->
     <div class="container w-50  mt-4 bg-white d-flex justify-content-between fixing">
-        <img src="../../assets/arrow-left-icon.webp" style="height:16 px ; width: 16px;">
-        <img src="../../assets/arrow-right-icon.webp" style="height:16 px ; width: 16px;">
+        <img src="../../assets/arrow-left-icon.webp" (click)="left()" style="height:16 px ; width: 16px;">
+        <img src="../../assets/arrow-right-icon.webp" (click)="right()" style="height:16 px ; width: 16px;">
         <img src="../../assets/pencil-icon.webp" style="height:16 px ; width: 16px;">
         <img src="../../assets/recycle-bin-icon.webp" style="height:16 px ; width: 16px;">
 

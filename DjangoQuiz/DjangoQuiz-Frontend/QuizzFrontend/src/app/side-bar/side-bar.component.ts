@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { QuizzServiceService } from '../services/quizz-service.service';
+import { QuizServiceService } from '../services/quiz-service.service';
 import { quizz } from '../interfaces/quizz';
 import { CommonModule } from '@angular/common';
 
@@ -12,11 +12,16 @@ import { CommonModule } from '@angular/common';
 })
 export class SideBarComponent {
   quizzes! : quizz[] ; 
-  constructor( private quizzService: QuizzServiceService) { }
+  constructor( private quizService: QuizServiceService) { }
 
   ngOnInit() {
-    this.quizzes = this.quizzService.fetchQuizzes() ; 
+    this.quizService.fetchQuizzees().subscribe(quizzes => this.quizzes = quizzes) ; 
   }
 
+  selectQuiz( quiz : quizz){
+
+      this.quizService.selectQuizz(quiz ) ; 
+  }
+  
   
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { QuizzWindowComponent } from './quizz-window/quizz-window.component';
-import { QuizzServiceService } from './services/quizz-service.service';
+import { QuizServiceService } from './services/quiz-service.service';
 import { CommonModule } from '@angular/common';
 import { quizz } from './interfaces/quizz';
 
@@ -16,11 +16,9 @@ import { quizz } from './interfaces/quizz';
 export class AppComponent {
   title = 'QuizzFrontend';
   quizzes! : quizz[] ; 
-  constructor(private quizzService : QuizzServiceService) {  }
   
 
   ngOnInit() {
-     this.quizzes = this.quizzService.fetchQuizzes()  ; 
 
   }
 
