@@ -3,6 +3,6 @@ import { QuizzQuestion } from "./quizz-question"
 export interface quizz {
     id : number , 
     title: string , 
-    descrition : string , 
-    quizzQuestions : QuizzQuestion[] , 
+    description : string , 
+    quiz_questions : QuizzQuestion[] , 
 }

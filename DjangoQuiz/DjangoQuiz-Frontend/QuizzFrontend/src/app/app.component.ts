@@ -15,12 +15,7 @@ import { quizz } from './interfaces/quizz';
 })
 export class AppComponent {
   title = 'QuizzFrontend';
-  quizzes! : quizz[] ; 
   
-
-  ngOnInit() {
-
-  }
 
 
 }

@@ -15,10 +15,13 @@ export class QuizServiceService {
   constructor(private httpClient : HttpClient) { }
   
   quizzes : BehaviorSubject<quizz[]> = new BehaviorSubject<quizz[]>([]);
-  selectedQuiz: BehaviorSubject<number> = new BehaviorSubject<number>(1);
-
+  selectedQuiz: BehaviorSubject<quizz | null> = new BehaviorSubject<quizz |null>(null);
+  quizId: number = 1 ; 
   fetchQuizzees() {
-    this.httpClient.get<any[]>(this.backendURL).subscribe((quizzes) => this.quizzes.next(quizzes))
+    this.httpClient.get<any[]>(this.backendURL).subscribe((quizzes) => {
+      this.quizzes.next(quizzes);
+      
+    });    
     return this.quizzes.asObservable() ;
   }
 
@@ -28,17 +31,20 @@ export class QuizServiceService {
   }
 
   selectQuizz(quizId : number) {
-    this.selectedQuiz.next(quizId);
-  }
-  getIdObservable(){
-    return this.selectedQuiz.asObservable() ;
-  }
+this.quizId = quizId;
+this.httpClient.get<any>(this.backendURL+ "/"+ this.quizId.toString()).subscribe(selectedQuiz =>{ 
+  this.selectedQuiz.next(selectedQuiz) ;  }
+) ; 
+}
+
+  
 
   getSelectedQuizz() {
-    const quizId = this.selectedQuiz.getValue();
-    var quiz =  null; 
-    this.httpClient.get<any>(this.backendURL+ quizId.toString()).subscribe(selectedQuiz => quiz = selectedQuiz ) ; 
-    return quiz; 
+    
+    this.httpClient.get<any>(this.backendURL+ "/"+ this.quizId.toString()).subscribe(selectedQuiz =>{ 
+      this.selectedQuiz.next(selectedQuiz) ;  }
+    ) ; 
+    return this.selectedQuiz; 
   }
 
  

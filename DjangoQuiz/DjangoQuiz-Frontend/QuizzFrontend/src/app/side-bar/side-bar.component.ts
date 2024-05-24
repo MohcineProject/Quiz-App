@@ -16,12 +16,18 @@ export class SideBarComponent {
 
   ngOnInit() {
     this.quizService.fetchQuizzees().subscribe(quizzes => this.quizzes = quizzes) ; 
+    console.log("executed the ngOnInit") ; 
+    
   }
 
   selectQuiz( quizId : number){
 
       this.quizService.selectQuizz(quizId ) ; 
+      
   }
   
+  test(){
+    console.log(this.quizzes) ; 
+  }
   
 }

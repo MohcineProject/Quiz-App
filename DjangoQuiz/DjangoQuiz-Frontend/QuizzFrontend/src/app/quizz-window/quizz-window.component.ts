@@ -5,17 +5,18 @@ import { QuizzQuestion } from '../interfaces/quizz-question';
 import { QuizServiceService } from '../services/quiz-service.service';
 import { quizz } from '../interfaces/quizz';
 import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-quizz-window',
   standalone: true,
-  imports: [QuizzQuestionComponent, QuizzAddQuestionComponent],
+  imports: [QuizzQuestionComponent, QuizzAddQuestionComponent, CommonModule],
   templateUrl: './quizz-window.component.html',
   styleUrl: './quizz-window.component.scss'
 })
 export class QuizzWindowComponent {
 
-  quizId : number = 1  ; 
+
   quiz : quizz | null  = null ;
   index : number = 0 
 
@@ -23,14 +24,14 @@ export class QuizzWindowComponent {
   
 
   ngOnInit() {
-  this.quizService.  getIdObservable().subscribe(quizId => this.quizId = quizId) ;
-  this.quiz = this.quizService.getSelectedQuizz() ; 
+  this.quizService.getSelectedQuizz().subscribe(quiz => this.quiz = quiz);  
   
   }
   right () {
     if (this.quiz) {
-    const num = this.quiz?.quizzQuestions.length ; 
-    if (this.index < num ) {
+    const num = this.quiz.quiz_questions.length ; 
+    console.log(num) ;
+    if (this.index < num -1) {
     this.index++ ;
     this.cdr.detectChanges() ; 
   }
