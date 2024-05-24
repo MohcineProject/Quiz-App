@@ -17,3 +17,19 @@ class QuizViewSet(viewsets.ModelViewSet):
         question_serializer = QuizQuestionSerializer(questions, many=True)
         quiz_data['quiz_questions'] = question_serializer.data
         return Response(quiz_data, status=status.HTTP_200_OK)
+    
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        data = []
+        
+        for quiz in queryset:
+            serializer = self.get_serializer(quiz)
+            quiz_data = serializer.data
+            questions = quiz.quiz_question.all()
+            question_serializer = QuizQuestionSerializer(questions, many=True)
+            quiz_data['quiz_questions'] = question_serializer.data
+            data.append(quiz_data)
+        
+        return Response(data, status=status.HTTP_200_OK)
+  
+ 

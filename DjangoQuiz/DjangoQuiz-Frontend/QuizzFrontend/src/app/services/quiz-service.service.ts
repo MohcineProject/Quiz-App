@@ -20,6 +20,7 @@ export class QuizServiceService {
   fetchQuizzees() {
     this.httpClient.get<any[]>(this.backendURL).subscribe((quizzes) => {
       this.quizzes.next(quizzes);
+      this.selectedQuiz.next(this.quizzes.getValue()[this.quizId-1]) ;
       
     });    
     return this.quizzes.asObservable() ;
@@ -32,18 +33,15 @@ export class QuizServiceService {
 
   selectQuizz(quizId : number) {
 this.quizId = quizId;
-this.httpClient.get<any>(this.backendURL+ "/"+ this.quizId.toString()).subscribe(selectedQuiz =>{ 
-  this.selectedQuiz.next(selectedQuiz) ;  }
-) ; 
+  this.selectedQuiz.next(this.quizzes.getValue()[quizId-1]) ;  
+
 }
 
   
 
   getSelectedQuizz() {
     
-    this.httpClient.get<any>(this.backendURL+ "/"+ this.quizId.toString()).subscribe(selectedQuiz =>{ 
-      this.selectedQuiz.next(selectedQuiz) ;  }
-    ) ; 
+    
     return this.selectedQuiz; 
   }
 

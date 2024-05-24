@@ -16,7 +16,6 @@ export class SideBarComponent {
 
   ngOnInit() {
     this.quizService.fetchQuizzees().subscribe(quizzes => this.quizzes = quizzes) ; 
-    console.log("executed the ngOnInit") ; 
     
   }
 
