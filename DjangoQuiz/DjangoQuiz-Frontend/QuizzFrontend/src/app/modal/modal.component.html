@@ -1,43 +1,43 @@
 <ng-template #content let-modal>
 	<div class="modal-header">
 		<h4 class="modal-title" id="modal-basic-title">Quiz Configuration</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">&times;</button>
 	</div>
 	<div class="modal-body">
 		<form>
-			<div class="mb-3">
-                <label for="projectName">Project Name</label>
-                <input type="text" id="projectName" class="form-control" name="projectName"   required>
+			        <div class="mb-3">
+                <label for="projectName">Quiz name</label>
+                <input type="text" id="projectName" class="form-control" name="projectName" [(ngModel)]="title"  required>
               </div>
               <div class="mb-3">
                 <label for="projectDescription">Quiz Description</label>
-                <textarea id="projectDescription" class="form-control" name="projectDescription"   required></textarea>
+                <textarea id="projectDescription" class="form-control" name="projectDescription" [(ngModel)]="description"   required></textarea>
               </div>
               <div class="mb-3">
-                <label for="question1">IAdd Question </label>
-                <input type="text" id="question1" class="form-control" name="question1"   required>
+                <label for="question1">Add First Question </label>
+                <input type="text" id="question1" class="form-control" name="question1"  [(ngModel)]="question" required>
               </div>
               <div class="mb-3">
                 <div class="container">
                     <div class="row">
                         <div class="mb-3 col-6">
-                        <label for="option1">IAdd option 1 </label>
-                        <input type="text" id="option" class="form-control" name="option1"   required>
+                        <label for="option1">Add option 1 </label>
+                        <input type="text" id="option" class="form-control" name="option1"  [(ngModel)]="option1" required>
                         </div>
                         <div class="mb-3 col-6">
-                        <label for="option2">IAdd option 2 </label>
-                        <input type="text" id="option" class="form-control" name="option2"   required>
+                        <label for="option2">Add option 2 </label>
+                        <input type="text" id="option" class="form-control" name="option2" [(ngModel)]="option2"  required>
                         </div>
     
                     </div>
                     <div class="row">
                         <div class="mb-3 col-6">
-                        <label for="option3">IAdd option 3 </label>
-                        <input type="text" id="option" class="form-control" name="option3"   required>
+                        <label for="option3">Add option 3 </label>
+                        <input type="text" id="option" class="form-control" name="option3" [(ngModel)]="option3"  required>
                         </div>
                         <div class="mb-3 col-6">
-                        <label for="option4">IAdd option 4 </label>
-                        <input type="text" id="option" class="form-control" name="option4"   required>
+                        <label for="option4">Add option 4 </label>
+                        <input type="text" id="option" class="form-control" name="option4" [(ngModel)]="option4"  required>
         
                         </div>
                         
@@ -46,12 +46,8 @@
 
 
               </div>
-
-              <div class="mb-3">
-                <label for="startDate">Start Date</label>
-                <input type="date" id="startDate" class="form-control" name="startDate" required>
-              </div>
-              <button type="submit" class="btn btn-primary" ></button>
+              
+              <button type="submit" class="btn btn-primary" (click)="submit()" >Submit</button>
 		</form>
 	</div>
 	<div class="modal-footer">
