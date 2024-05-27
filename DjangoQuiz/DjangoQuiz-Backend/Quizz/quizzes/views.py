@@ -25,7 +25,7 @@ class QuizViewSet(viewsets.ModelViewSet):
         for quiz in queryset:
             serializer = self.get_serializer(quiz)
             quiz_data = serializer.data
-            questions = quiz.quiz_question.all()
+            questions = quiz.quiz_questions.all()
             question_serializer = QuizQuestionSerializer(questions, many=True)
             quiz_data['quiz_questions'] = question_serializer.data
             data.append(quiz_data)
@@ -35,36 +35,16 @@ class QuizViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-
-        # Call perform_create to save the instance
         self.perform_create(serializer)
 
-        # Access the created instance
-        quiz_instance = serializer.instance
+        queryset = self.get_queryset() ; 
+        data = []
+        for query in queryset : 
+            serializer = self.get_serializer(query)
+            quiz_data = serializer.data 
+            questions = query.quiz_questions.all()
+            question_serializer = QuizQuestionSerializer(questions,many=True)
+            quiz_data['quiz_questions'] = question_serializer.data 
+            data.append(quiz_data)
 
-        # Access the generated ID
-        quiz_id = quiz_instance.id
-
-        # Get the list of questions from the request data
-        questions_data = request.data.get('quiz_questions')
-
-        # Create associated questions for the quiz
-        if questions_data:
-            for question_data in questions_data:
-                # Set the quiz_id for each question_data
-                question_data['quiz'] = quiz_id  # Use the quiz_id here
-                question_serializer = QuizQuestionSerializer(data=question_data)
-                question_serializer.is_valid(raise_exception=True)
-                question_serializer.save()
-
-        # Retrieve all quizzes after creating the new quiz
-        queryset = self.filter_queryset(self.get_queryset())
-        serializer = self.get_serializer(queryset, many=True)
-
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-        
-
-
-
-    
+        return Response(data, status=status.HTTP_201_CREATED)

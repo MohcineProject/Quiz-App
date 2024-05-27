@@ -10,7 +10,7 @@ class Quiz(models.Model) :
         return self.title 
     
 class QuizQuestion(models.Model):
-    quiz = models.ForeignKey(Quiz , related_name='quiz_question', on_delete=models.CASCADE)
+    quiz = models.ForeignKey(Quiz , related_name='quiz_questions', on_delete=models.CASCADE)
     question = models.TextField() 
     option1 = models.CharField(max_length=255) 
     option2 = models.CharField(max_length=255) 

@@ -30,7 +30,6 @@ export class QuizzWindowComponent {
   right () {
     if (this.quiz) {
     const num = this.quiz.quiz_questions.length ; 
-    console.log(num) ;
     if (this.index < num -1) {
     this.index++ ;
     this.cdr.detectChanges() ; 
