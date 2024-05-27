@@ -48,3 +48,20 @@ class QuizViewSet(viewsets.ModelViewSet):
             data.append(quiz_data)
 
         return Response(data, status=status.HTTP_201_CREATED)
+    
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+
+        # Retrieve the updated list of quizzes after deletion
+        queryset = self.get_queryset()
+        data = []
+        for quiz in queryset:
+            serializer = self.get_serializer(quiz)
+            quiz_data = serializer.data
+            questions = quiz.quiz_questions.all()
+            question_serializer = QuizQuestionSerializer(questions, many=True)
+            quiz_data['quiz_questions'] = question_serializer.data
+            data.append(quiz_data)
+
+        return Response(data, status=status.HTTP_200_OK)

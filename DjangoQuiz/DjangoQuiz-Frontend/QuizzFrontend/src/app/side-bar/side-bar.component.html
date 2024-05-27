@@ -9,7 +9,7 @@
         <div class="d-flex w-100 align-items-center justify-content-between" >
           <strong class="mb-1" >{{quizz.title}} </strong>
           <div class="d-flex  justify-content-between" style="width: 20%;">
-          <small class="text-muted" ><img src="../../assets/recycle-bin-icon.webp" height="16px" width="16px"></small>
+          <small class="text-muted" ><img src="../../assets/recycle-bin-icon.webp" (click)="openDeleteModal(quizz.id!)" height="16px" width="16px"></small>
           <small class="text-muted"><img src="../../assets/pencil-icon.webp" height="16px" width="16px"></small>
         </div>
         </div>
@@ -17,7 +17,7 @@
       </a>
     
       
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-tight" (click)="open()">
+      <a href="#" class="list-group-item list-group-item-action py-3 lh-tight" (click)="openAddQuizModal()">
         <div class="d-flex w-100 align-items-center justify-content-center">
           <strong class="mb-1">Add a new Quizz </strong>
           
@@ -28,4 +28,6 @@
     </div>
   </div>
 
-  <app-modal #content></app-modal>
+  <app-modal #AddQuizcontent></app-modal>
+  <app-delete-model #DeleteContent></app-delete-model>
+  

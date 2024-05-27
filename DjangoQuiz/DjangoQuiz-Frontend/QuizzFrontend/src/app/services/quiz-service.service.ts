@@ -29,7 +29,6 @@ export class QuizServiceService {
   addQuizz(quiz : quizz) {
     this.httpClient.post<any>(this.backendURL, quiz).subscribe((quizzes) =>{
      this.quizzes.next(quizzes) ; 
-     console.log(quizzes) ; 
     
     }); 
 
@@ -49,7 +48,12 @@ this.quizId = quizId;
     return this.selectedQuiz; 
   }
 
- 
+ deleteQuiz(quizId : number) {
+
+  this.httpClient.delete<any>(this.backendURL + quizId.toString()).subscribe(quizzes => {
+    this.quizzes.next(quizzes) ;
+  })
+ }
   
 
 

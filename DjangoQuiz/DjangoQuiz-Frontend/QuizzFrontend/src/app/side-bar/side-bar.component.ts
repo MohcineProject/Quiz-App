@@ -3,18 +3,19 @@ import { QuizServiceService } from '../services/quiz-service.service';
 import { quizz } from '../interfaces/quizz';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from '../modal/modal.component';
+import { DeleteModelComponent } from '../delete-model/delete-model.component';
 
 @Component({
   selector: 'app-side-bar',
   standalone: true,
-  imports: [CommonModule, ModalComponent],
+  imports: [CommonModule, ModalComponent, DeleteModelComponent],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss'
 })
 export class SideBarComponent {
   quizzes! : quizz[] ; 
-  @ViewChild('content') content! : ModalComponent ; 
-
+  @ViewChild('AddQuizcontent') AddQuizcontent! : ModalComponent ; 
+  @ViewChild('DeleteContent') DeleteContent! : DeleteModelComponent ; 
 
   constructor( private quizService: QuizServiceService) { }
 
@@ -29,8 +30,14 @@ export class SideBarComponent {
       
   }
   
-  open(){
-    this.content.open() ;
+  openAddQuizModal(){
+    this.AddQuizcontent.open() ;
+  }
+
+  openDeleteModal(quizId : number){
+    this.DeleteContent.quizId = quizId ;
+    this.DeleteContent.open() ;
+    
   }
   
 }
