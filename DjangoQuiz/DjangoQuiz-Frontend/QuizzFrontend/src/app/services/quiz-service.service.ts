@@ -50,8 +50,27 @@ this.quizId = quizId;
 
  deleteQuiz(quizId : number) {
 
-  this.httpClient.delete<any>(this.backendURL + quizId.toString()).subscribe(quizzes => {
-    this.quizzes.next(quizzes) ;
+   
+   const index = this.quizzes.getValue().findIndex(quizze => quizze.id === quizId);
+   
+   this.httpClient.delete<any>(this.backendURL + quizId.toString()).subscribe(quizzes => {
+     
+     this.quizzes.next(quizzes) ;
+     if (index === 0  ) {
+         if (this.quizzes.getValue().length === 0) {
+           this.selectedQuiz.next(null);
+         } 
+         else {
+           this.selectedQuiz.next(this.quizzes.getValue()[index]) ;
+           console.log(this.quizzes.getValue()[index])
+           console.log("Succesful")
+         }
+     } else {
+       this.selectedQuiz.next(this.quizzes.getValue()[index-1]) ;
+     }
+
+
+
   })
  }
   

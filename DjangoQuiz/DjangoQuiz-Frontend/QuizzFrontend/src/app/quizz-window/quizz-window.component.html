@@ -1,7 +1,11 @@
 <div class="fluid-container p-4 m-3 h-100 parent">
-
     <div *ngIf="quiz">
-        <app-quizz-question [question]="quiz.quiz_questions[index]"></app-quizz-question>
+        <ng-container *ngIf="index != quiz.quiz_questions.length; else elseBlock">
+            <app-quizz-question [question]="quiz.quiz_questions[index]"></app-quizz-question>
+        </ng-container>
+        <ng-template #elseBlock>
+            <app-quizz-add-question></app-quizz-add-question>
+        </ng-template>
     </div>
 
     <!--  The nav bar to go trought questions :  -->

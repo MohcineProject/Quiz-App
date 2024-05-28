@@ -24,16 +24,22 @@ export class QuizzWindowComponent {
   
 
   ngOnInit() {
-  this.quizService.getSelectedQuizz().subscribe(quiz => this.quiz = quiz);  
+  this.quizService.getSelectedQuizz().subscribe(quiz => {
+    
+    this.quiz = quiz;
+    this.index = 0 ; 
+  }
+  );  
   
   }
   right () {
     if (this.quiz) {
     const num = this.quiz.quiz_questions.length ; 
-    if (this.index < num -1) {
+    if (this.index <= num - 1) {
     this.index++ ;
     this.cdr.detectChanges() ; 
-  }
+    
+  } 
     }
 
   }
