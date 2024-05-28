@@ -72,9 +72,23 @@ this.quizId = quizId;
 
 
   })
- }
+ 
   
 
+
+}
+  
+updateQuiz(id: number, title: string, description: string) {
+  const body = { title, description };
+  this.httpClient.patch<quizz>(this.backendURL+ id.toString()+ "/", body).subscribe(
+    (updatedQuiz) => {
+    this.fetchQuizzees();  
+  },
+  (error) => {
+    console.error('Error updating quiz:', error);
+  }
+)
+}
 
 
 }

@@ -1,0 +1,27 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Quiz Configuration</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">&times;</button>
+	</div>
+	<div class="modal-body">
+		<form>
+			        <div class="mb-3">
+                <label for="quizName">Quiz name</label>
+                <input type="text" id="quizName" class="form-control" name="quizName" [(ngModel)]="title"  required>
+              </div>
+              <div class="mb-3">
+                <label for="quizDescription">Quiz Description</label>
+                <textarea id="quizDescription" class="form-control" name="quizDescription" [(ngModel)]="description"   required></textarea>
+              </div>
+			  <button type="submit" class="btn btn-primary" (click)="submit()" >Edit Quiz</button>
+              	</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">close</button>
+	</div>
+</ng-template>
+
+
+
+
+

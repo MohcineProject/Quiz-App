@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SideBarComponent } from './side-bar/side-bar.component';
-import { QuizzWindowComponent } from './quizz-window/quizz-window.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { QuizzWindowComponent } from './components/quizz-window/quizz-window.component';
 import { QuizServiceService } from './services/quiz-service.service';
 import { CommonModule } from '@angular/common';
 import { quizz } from './interfaces/quizz';

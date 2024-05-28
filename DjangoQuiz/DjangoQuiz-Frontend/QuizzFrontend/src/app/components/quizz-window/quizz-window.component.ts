@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { QuizzQuestionComponent } from '../quizz-question/quizz-question.component';
 import { QuizzAddQuestionComponent } from '../quizz-add-question/quizz-add-question.component';
-import { QuizzQuestion } from '../interfaces/quizz-question';
-import { QuizServiceService } from '../services/quiz-service.service';
-import { quizz } from '../interfaces/quizz';
+import { QuizzQuestion } from '../../interfaces/quizz-question';
+import { QuizServiceService } from '../../services/quiz-service.service';
+import { quizz } from '../../interfaces/quizz';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 

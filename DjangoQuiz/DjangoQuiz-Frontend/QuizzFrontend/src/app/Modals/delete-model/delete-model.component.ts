@@ -1,5 +1,5 @@
 import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
-import { QuizServiceService } from '../services/quiz-service.service';
+import { QuizServiceService } from '../../services/quiz-service.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

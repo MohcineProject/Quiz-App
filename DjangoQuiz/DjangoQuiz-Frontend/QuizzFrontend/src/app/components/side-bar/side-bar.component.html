@@ -10,7 +10,7 @@
           <strong class="mb-1" >{{quizz.title}} </strong>
           <div class="d-flex  justify-content-between" style="width: 20%;">
           <small class="text-muted" ><img src="../../assets/recycle-bin-icon.webp" (click)="openDeleteModal(quizz.id!)" height="16px" width="16px"></small>
-          <small class="text-muted"><img src="../../assets/pencil-icon.webp" height="16px" width="16px"></small>
+          <small class="text-muted"><img src="../../assets/pencil-icon.webp" (click)="openEditQuizModal(quizz.id!)" height="16px" width="16px"></small>
         </div>
         </div>
         <div class="col-10 mb-1 small" >{{quizz.description}}</div>
@@ -30,4 +30,5 @@
 
   <app-modal #AddQuizcontent></app-modal>
   <app-delete-model #DeleteContent></app-delete-model>
+  <app-edit-quiz-modal #EditQuizContent></app-edit-quiz-modal>
   
