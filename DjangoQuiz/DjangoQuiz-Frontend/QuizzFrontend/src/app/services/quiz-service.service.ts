@@ -12,6 +12,7 @@ import { quizz } from '../interfaces/quizz';
 export class QuizServiceService {
 
   private backendURL = environment.backendURL ; 
+  private backendURLQuestions = environment.backendURLQuestions ; 
   constructor(private httpClient : HttpClient) { }
   
   quizzes : BehaviorSubject<quizz[]> = new BehaviorSubject<quizz[]>([]);
@@ -91,4 +92,15 @@ updateQuiz(id: number, title: string, description: string) {
 }
 
 
+UpdateQuestion(id: number , question : String , option1 : String , option2 : String, option3 : String, option4 : String) {
+  const body = { question, option1, option2, option3, option4 };
+  this.httpClient.patch<quizz>(this.backendURLQuestions+ id.toString()+ "/", body).subscribe(
+    (updatedQuiz) => {
+    this.fetchQuizzees();  
+  },
+  (error) => {
+    console.error('Error updating Question:', error);})
+  }
 }
+
+

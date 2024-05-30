@@ -1,0 +1,54 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Quiz Configuration</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">&times;</button>
+	</div>
+	<div class="modal-body">
+		<form>
+			        
+              <div class="mb-3">
+                <label for="question">Modify Question : </label>
+                <input type="text" id="question" class="form-control" name="question" placeholder="question"  [(ngModel)]="question" required>
+              </div>
+              <div class="mb-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="mb-3 col-6">
+                        <label for="option1">Option 1  </label>
+                        <input type="text" id="option" class="form-control" name="option1" placeholder="option1"  [(ngModel)]="option1" required>
+                        </div>
+                        <div class="mb-3 col-6">
+                        <label for="option2">Option 2 </label>
+                        <input type="text" id="option" class="form-control" name="option2" placeholder="option2" [(ngModel)]="option2"  required>
+                        </div>
+    
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-6">
+                        <label for="option3"> Option 3 </label>
+                        <input type="text" id="option" class="form-control" name="option3" placeholder="option3" [(ngModel)]="option3"  required>
+                        </div>
+                        <div class="mb-3 col-6">
+                        <label for="option4"> Option 4 </label>
+                        <input type="text" id="option" class="form-control" name="option4" placeholder="option4" [(ngModel)]="option4"  required>
+        
+                        </div>
+                        
+                    </div>
+                </div>
+
+
+              </div>
+              
+              <button type="submit" class="btn btn-primary" (click)="submit()" > Update </button>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">close</button>
+	</div>
+</ng-template>
+
+
+
+
+

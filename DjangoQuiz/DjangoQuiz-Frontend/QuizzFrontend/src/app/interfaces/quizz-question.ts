@@ -1,7 +1,7 @@
 
 
 export interface QuizzQuestion {
-    
+    id? : number ; 
     question : String , 
     option1 : String , 
     option2 : String , 

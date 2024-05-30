@@ -1,8 +1,12 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import viewsets
-from .models import Quiz
+from .models import Quiz, QuizQuestion
 from .serializers import QuizSerializer, QuizQuestionSerializer
+
+class QuizQuestionViewSet(viewsets.ModelViewSet) :
+    queryset = QuizQuestion.objects.all()
+    serializer_class = QuizQuestionSerializer
 
 class QuizViewSet(viewsets.ModelViewSet):
     queryset = Quiz.objects.all()

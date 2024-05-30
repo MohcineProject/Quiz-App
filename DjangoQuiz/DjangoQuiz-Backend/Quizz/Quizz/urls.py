@@ -17,11 +17,11 @@ Including another URLconf
 # urls.py
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from quizzes.views import QuizViewSet  # Adjust import path as per your app structure
+from quizzes.views import QuizViewSet , QuizQuestionViewSet  # Adjust import path as per your app structure
 
 router = DefaultRouter()
 router.register(r'quizzes', QuizViewSet)
-
+router.register(r'questions', QuizQuestionViewSet)
 urlpatterns = [
     path('', include(router.urls)),
 ]

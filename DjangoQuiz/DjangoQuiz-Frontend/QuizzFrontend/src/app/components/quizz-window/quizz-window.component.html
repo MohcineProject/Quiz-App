@@ -6,15 +6,16 @@
         <ng-template #elseBlock>
             <app-quizz-add-question></app-quizz-add-question>
         </ng-template>
-    </div>
-
-    <!--  The nav bar to go trought questions :  -->
-    <div class="container w-50  mt-4 bg-white d-flex justify-content-between fixing">
-        <img src="../../assets/arrow-left-icon.webp" (click)="left()" class=" nav_icon">
-        <img src="../../assets/arrow-right-icon.webp" (click)="right()" class=" nav_icon">
-        <img src="../../assets/pencil-icon.webp" class= "nav_icon">
-        <img src="../../assets/recycle-bin-icon.webp" class= "nav_icon">
-
+        
+        <!--  The nav bar to go trought questions :  -->
+        <div class="container w-50  mt-4 bg-white d-flex justify-content-between fixing">
+            <img src="../../assets/arrow-left-icon.webp" (click)="left()" class=" nav_icon">
+            <img src="../../assets/arrow-right-icon.webp" (click)="right()" class=" nav_icon">
+            <img src="../../assets/pencil-icon.webp" class= "nav_icon" (click)="modifyQuestion()" >
+            <img src="../../assets/recycle-bin-icon.webp" class= "nav_icon">
+            
+        </div>
     </div>
     
 </div>
+<app-edit-question #content></app-edit-question>
