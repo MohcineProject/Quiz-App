@@ -18,6 +18,8 @@ export class QuizServiceService {
   quizzes : BehaviorSubject<quizz[]> = new BehaviorSubject<quizz[]>([]);
   selectedQuiz: BehaviorSubject<quizz | null> = new BehaviorSubject<quizz |null>(null);
   quizId: number = 0 ; 
+
+
   fetchQuizzees() {
     this.httpClient.get<any[]>(this.backendURL).subscribe((quizzes) => {
       this.quizzes.next(quizzes);
@@ -44,18 +46,12 @@ this.quizId = quizId;
   
 
   getSelectedQuizz() {
-    
-    
     return this.selectedQuiz; 
   }
 
  deleteQuiz(quizId : number) {
-
-   
    const index = this.quizzes.getValue().findIndex(quizze => quizze.id === quizId);
-   
    this.httpClient.delete<any>(this.backendURL + quizId.toString()).subscribe(quizzes => {
-     
      this.quizzes.next(quizzes) ;
      if (index === 0  ) {
          if (this.quizzes.getValue().length === 0) {
@@ -101,6 +97,22 @@ UpdateQuestion(id: number , question : String , option1 : String , option2 : Str
   (error) => {
     console.error('Error updating Question:', error);})
   }
+
+
+  
+// This function is used to delete a quiz question: 
+deleteQuizQuestion(id : number) {
+// Request the deletion of the quiz question using the id
+this.httpClient.delete<any>(this.backendURLQuestions+ id.toString()+ "/").subscribe( ()=>{
+// Reinitialize the quizzes with the new values
+this.fetchQuizzees();
+// Handle potential errors in the delete request
+}, (error)=>{
+  console.log('Error deleting quiz question' , error); 
+}) ;
 }
 
+
+
+}
 

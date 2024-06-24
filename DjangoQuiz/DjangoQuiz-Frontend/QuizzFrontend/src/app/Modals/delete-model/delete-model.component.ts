@@ -11,11 +11,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DeleteModelComponent {
 
-  @Input() quizId!: number ;
-
-  
+  @Input() id!: number ;
+  @Input() target! : target ; 
   @ViewChild('content') content ! : TemplateRef<any>;
 
+
+  
   constructor(private modalService: NgbModal, private quizService: QuizServiceService) { }
 
   open () {
@@ -28,7 +29,16 @@ export class DeleteModelComponent {
 
 
   delete() {
-    this.quizService.deleteQuiz(this.quizId) ; 
+    if (this.target == target.quiz) {
+    this.quizService.deleteQuiz(this.id) ; 
+  } else {
+    this.quizService.deleteQuizQuestion(this.id) ;
+  }
     this.modalService.dismissAll();
   }
+}
+export enum target {
+  quiz = 'quiz' , 
+  question = 'question',
+
 }

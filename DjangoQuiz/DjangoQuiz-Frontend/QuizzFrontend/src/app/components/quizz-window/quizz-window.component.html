@@ -12,10 +12,11 @@
             <img src="../../assets/arrow-left-icon.webp" (click)="left()" class=" nav_icon">
             <img src="../../assets/arrow-right-icon.webp" (click)="right()" class=" nav_icon">
             <img src="../../assets/pencil-icon.webp" class= "nav_icon" (click)="modifyQuestion()" >
-            <img src="../../assets/recycle-bin-icon.webp" class= "nav_icon">
+            <img src="../../assets/recycle-bin-icon.webp" class= "nav_icon" (click)="deleteQuestion()">
             
         </div>
     </div>
     
 </div>
-<app-edit-question #content></app-edit-question>
+<app-edit-question #contentEdit></app-edit-question>
+<app-delete-model #contentDelete></app-delete-model>

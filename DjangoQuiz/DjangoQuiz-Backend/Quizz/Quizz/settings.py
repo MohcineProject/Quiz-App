@@ -130,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",  # Add your Angular frontend URL here
+    "http://localhost:4200", 
 ]
 
 

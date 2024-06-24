@@ -3,7 +3,7 @@ import { QuizServiceService } from '../../services/quiz-service.service';
 import { quizz } from '../../interfaces/quizz';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from '../../Modals/modal/modal.component';
-import { DeleteModelComponent } from '../../Modals/delete-model/delete-model.component';
+import { DeleteModelComponent, target } from '../../Modals/delete-model/delete-model.component';
 import { EditQuizModalComponent } from '../../Modals/edit-quiz-modal/edit-quiz-modal.component';
 
 @Component({
@@ -37,8 +37,9 @@ export class SideBarComponent {
     this.AddQuizcontent.open() ;
   }
 
-  openDeleteModal(quizId : number){
-    this.DeleteContent.quizId = quizId ;
+  openDeleteModal(id : number){
+    this.DeleteContent.target = target.quiz ; 
+    this.DeleteContent.id = id ;
     this.DeleteContent.open() ;
     
   }
