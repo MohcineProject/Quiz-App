@@ -22,6 +22,8 @@ export class SideBarComponent {
 
   constructor( private quizService: QuizServiceService) { }
 
+
+  // A lifecycle hook that requests the quizzes list to display on the side bar
   ngOnInit() {
     this.quizService.fetchQuizzees().subscribe(quizzes => this.quizzes = quizzes) ; 
     

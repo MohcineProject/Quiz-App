@@ -49,8 +49,12 @@ this.quizId = quizId;
     return this.selectedQuiz; 
   }
 
+
+  // This is the service function responsible for deleting a quiz 
  deleteQuiz(quizId : number) {
+  // Get the selected quiz index 
    const index = this.quizzes.getValue().findIndex(quizze => quizze.id === quizId);
+  // Send the http request to the server to delete the quiz based on the Id 
    this.httpClient.delete<any>(this.backendURL + quizId.toString()).subscribe(quizzes => {
      this.quizzes.next(quizzes) ;
      if (index === 0  ) {
@@ -59,8 +63,6 @@ this.quizId = quizId;
          } 
          else {
            this.selectedQuiz.next(this.quizzes.getValue()[index]) ;
-           console.log(this.quizzes.getValue()[index])
-           console.log("Succesful")
          }
      } else {
        this.selectedQuiz.next(this.quizzes.getValue()[index-1]) ;
@@ -113,6 +115,16 @@ this.fetchQuizzees();
 }
 
 
+// this function is responsible for adding a quiz question 
+addQuizQuestion( quizQuestion : QuizzQuestion , quizId : number){
+  // Send the server a request to add a quiz question
+  this.httpClient.post<any>(this.backendURL + quizId.toString() + "/add_question/", quizQuestion).subscribe(
+    (result) =>{
+      this.fetchQuizzees();
+    }
 
+  );
+
+}
 }
 

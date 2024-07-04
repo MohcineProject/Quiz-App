@@ -4,5 +4,6 @@ export interface quizz {
     id? : number , 
     title: string , 
     description : string , 
-    quiz_questions : QuizzQuestion[] , 
+    quiz_questions : QuizzQuestion[],
+     
 }

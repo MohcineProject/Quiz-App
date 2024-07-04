@@ -1,3 +1,5 @@
-<div class="w-80 bg-light addWindow">
+<div class="w-80 bg-light addWindow" (click)="addQuestionToQuiz()">
     Add a new <br> question 
 </div>
+
+<app-add-question-modal #content [quizId]="quizId"></app-add-question-modal>

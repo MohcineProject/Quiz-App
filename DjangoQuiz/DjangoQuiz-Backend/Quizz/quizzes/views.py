@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from .models import Quiz, QuizQuestion
 from .serializers import QuizSerializer, QuizQuestionSerializer
+from rest_framework.decorators import action
 
 class QuizQuestionViewSet(viewsets.ModelViewSet) :
     queryset = QuizQuestion.objects.all()
@@ -56,7 +57,6 @@ class QuizViewSet(viewsets.ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
         self.perform_destroy(instance)
-
         # Retrieve the updated list of quizzes after deletion
         queryset = self.get_queryset()
         data = []
@@ -69,3 +69,15 @@ class QuizViewSet(viewsets.ModelViewSet):
             data.append(quiz_data)
 
         return Response(data, status=status.HTTP_200_OK)
+    
+    @action(detail=True, methods=["post"])
+    def add_question(self, request, pk=None):
+        quiz = self.get_object()
+        serializer = QuizQuestionSerializer(data=request.data)
+        if (serializer.is_valid()) : 
+            serializer.save(quiz=quiz)
+            return Response(serializer.data , status=status.HTTP_201_CREATED)
+        else : 
+            return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+    
+    

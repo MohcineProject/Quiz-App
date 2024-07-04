@@ -4,7 +4,7 @@
             <app-quizz-question [question]="quiz.quiz_questions[index]"></app-quizz-question>
         </ng-container>
         <ng-template #elseBlock>
-            <app-quizz-add-question></app-quizz-add-question>
+            <app-quizz-add-question [quizId]="quiz.id!"></app-quizz-add-question>
         </ng-template>
         
         <!--  The nav bar to go trought questions :  -->

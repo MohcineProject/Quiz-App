@@ -105,7 +105,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': 'MySQL789/*-/*-',
         'HOST': 'localhost',
-        'PORT': '3306',  # MySQL default port
+        'PORT': '3306',  
     }
 }
 

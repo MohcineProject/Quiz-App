@@ -29,12 +29,12 @@ export class QuizzWindowComponent {
   ngOnInit() {
   this.quizService.getSelectedQuizz().subscribe(quiz => {
     
-    this.quiz = quiz;
-    this.index = 0 ; 
+    this.quiz = quiz; 
   }
   );  
   
   }
+  // Choose the new quiz question to the right (handles limit case)
   right () {
     if (this.quiz) {
     const num = this.quiz.quiz_questions.length ; 
