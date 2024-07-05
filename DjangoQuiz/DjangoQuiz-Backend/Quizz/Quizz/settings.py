@@ -99,13 +99,14 @@ WSGI_APPLICATION = 'Quizz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 DATABASES = {
+    # I am using MySQL 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'quizz',
-        'USER': 'root',
-        'PASSWORD': 'MySQL789/*-/*-',
-        'HOST': 'localhost',
-        'PORT': '3306',  
+        'NAME': 'NAME OF THE DATABASE',
+        'USER': 'YOUR USERNAME',
+        'PASSWORD': 'YOUR PASSWORD',
+        'HOST': 'THE URI OF THE DATABASE',
+        'PORT': 'THE PORT OD THE DATABASE',  
     }
 }
 
