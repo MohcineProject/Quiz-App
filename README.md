@@ -13,7 +13,7 @@ git clone <URI>
 
 You will have two folders: `DjangoQuiz-Backend` for the backend of the application, and `DjangoQuiz-Frontend` for the frontend. 
 
-First, ensure you have a database service running (I used MySQL, for example) and add the configuration file in the `DATABASES` variable at:
+First, ensure you have a database service running (I used MySQL, for example) and add your connection credentials in the `DATABASES` variable at:
 
 ```sh
 DjangoQuiz\DjangoQuiz-Backend\Quizz\Quizz\settings.py
