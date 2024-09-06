@@ -101,6 +101,7 @@ WSGI_APPLICATION = 'Quizz.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 # Setting up the database connection using Django's MySQL database backend
 DATABASES = {
+    # I am using MySQL 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': config('DATABASE_NAME'),
