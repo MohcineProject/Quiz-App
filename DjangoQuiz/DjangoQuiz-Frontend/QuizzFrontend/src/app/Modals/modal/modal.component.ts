@@ -21,8 +21,7 @@ export class ModalComponent {
   option2! : String ; 
   option3! : String ; 
   option4! : String ; 
-
-
+  correctOption! : String ;
   @ViewChild('content') content ! : TemplateRef<any>;
 
   constructor(private modalService: NgbModal, private quizService: QuizServiceService) { }
@@ -35,6 +34,7 @@ export class ModalComponent {
     }
   }
 
+  
   submit() {
     this.quiz = {
       
@@ -46,6 +46,7 @@ export class ModalComponent {
         option2 : this.option2, 
         option3 : this.option3, 
         option4 : this.option4, 
+        answer : this.correctOption,  
       }] 
   } ;
   this.quizService.addQuizz(this.quiz) ; 

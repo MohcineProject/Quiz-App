@@ -37,7 +37,23 @@ class QuizViewSet(viewsets.ModelViewSet):
         
         return Response(data, status=status.HTTP_200_OK)
     
+
     def create(self, request, *args, **kwargs):
+        """
+        Creates a new quiz and its associated questions.
+
+        Args:
+            request (Request): The HTTP request object.
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+
+        Returns:
+            Response: The HTTP response object with the created quizzes and their associated questions.
+
+        Raises:
+            ValidationError: If the serializer data is invalid.
+
+        """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)

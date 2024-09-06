@@ -6,21 +6,58 @@
     <div class="container w-80">
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center align-items-stretch align-content-stretch">
-                <div class="bg-dark w-30 m-3  item contour">
+                <div class="bg-dark w-30 m-3  item contour"
+                [ngClass]="
+                    {
+                    'correct' : selectedOption === 'option1' && checkAnswer('option1'),
+                    'incorrect' : selectedOption === 'option1' && !checkAnswer('option1'),
+                    'showCorrect' :  selectedOption && (selectedOption !== 'option1') && checkAnswer('option1')
+                    }
+                "
+                (click)="selectOption('option1')"
+                >
                     {{question!.option1}}
                 </div>
-                <div class="bg-dark w-30 m-3 item contour">
+                <div class="bg-dark w-30 m-3 item contour"
+                [ngClass]="
+                    {
+                    'correct' : selectedOption === 'option2' && checkAnswer('option2'),
+                    'incorrect' : selectedOption === 'option2' && !checkAnswer('option2'),
+                    'showCorrect' :  selectedOption && (selectedOption !== 'option2') && checkAnswer('option2')
+                    }
+                "
+                (click)="selectOption('option2')"
+                >
                     {{question!.option2}}
                 </div>
             </div>
             <div class="col-12 d-flex justify-content-between align-items-center align-items-stretch align-content-stretch">
-                <div class="bg-dark w-30 m-3 item contour">
+                <div class="bg-dark w-30 m-3 item contour"
+                [ngClass]="
+                    {
+                    'correct' : selectedOption === 'option3' && checkAnswer('option3'),
+                    'incorrect' : selectedOption === 'option3' && !checkAnswer('option3'),
+                    'showCorrect' : selectedOption && (selectedOption !== 'option3') && checkAnswer('option3')
+                    }
+                "
+                (click)="selectOption('option3')"
+                >
                     {{question!.option3}}
                 </div>
-                <div class="bg-dark w-30 m-3 item contour">
+                <div class="bg-dark w-30 m-3 item contour"
+                [ngClass]="
+                    {
+                    'correct' : selectedOption === 'option4' && checkAnswer('option4'),
+                    'incorrect' : selectedOption === 'option4' && !checkAnswer('option4'),
+                    'showCorrect' : selectedOption  && (selectedOption !== 'option4') && checkAnswer('option4')
+                    }
+                "
+                (click)="selectOption('option4')"
+                >
                     {{question!.option4}}
                 </div>
             </div>
         </div>
     </div>
 </ng-container>
+

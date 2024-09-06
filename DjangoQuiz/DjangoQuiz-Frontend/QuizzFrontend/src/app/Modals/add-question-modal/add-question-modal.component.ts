@@ -14,14 +14,18 @@ import { QuizzQuestion } from '../../interfaces/quizz-question';
 export class AddQuestionModalComponent {
 
   @Input() quizId! : number ; 
+  question! : String ;
    option1! : String ; 
    option2! : String ; 
    option3! : String ; 
-   option4! : String ; 
-   question! : String ;
+   option4! : String ;
+   correctOption! : String ;  
+
   @ViewChild("content") content! : TemplateRef<any> ; 
 
   constructor(private modalService : NgbModal , private quizService: QuizServiceService){};
+
+  
 
 
 // The function to open the modal to the user 
@@ -46,6 +50,7 @@ submit(){
     option2 : this.option2 , 
     option3 : this.option3 , 
     option4 : this.option4 , 
+    answer : this.correctOption,
   }
   // Pass the id of the targeted quiz and the new quizQuestion to add 
   this.quizService.addQuizQuestion(quizQuestion, this.quizId) ; 

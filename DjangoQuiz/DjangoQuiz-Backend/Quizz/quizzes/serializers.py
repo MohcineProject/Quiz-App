@@ -5,7 +5,7 @@ from .models import Quiz, QuizQuestion
 class QuizQuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuizQuestion
-        fields = ['id', 'question', 'option1', 'option2', 'option3', 'option4']
+        fields = ['id', 'question', 'option1', 'option2', 'option3', 'option4', 'answer']
 
 class QuizSerializer(serializers.ModelSerializer):
     quiz_questions = QuizQuestionSerializer(many=True)

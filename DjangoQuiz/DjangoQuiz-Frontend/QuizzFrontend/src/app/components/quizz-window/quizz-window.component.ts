@@ -30,6 +30,7 @@ export class QuizzWindowComponent {
   this.quizService.getSelectedQuizz().subscribe(quiz => {
     
     this.quiz = quiz; 
+    this.index = 0 ;
   }
   );  
   
@@ -53,6 +54,10 @@ export class QuizzWindowComponent {
   }
   }
 
+
+
+  // A function to open the edit modal for editing a question, we pass 
+  // the data of the initial question to be displayed in the inputs of the modal
   modifyQuestion(){
     if (this.quiz) {
   this.contentEdit.questionId = this.quiz.quiz_questions[this.index].id! ; 
@@ -60,13 +65,17 @@ export class QuizzWindowComponent {
   this.contentEdit.option1 = this.quiz.quiz_questions[this.index].option1 ; 
   this.contentEdit.option2 = this.quiz.quiz_questions[this.index].option2 ; 
   this.contentEdit.option3 = this.quiz.quiz_questions[this.index].option3 ; 
-  this.contentEdit.option4 = this.quiz.quiz_questions[this.index].option4 ; 
+  this.contentEdit.option4 = this.quiz.quiz_questions[this.index].option4; 
+  this.contentEdit.correctOption = this.quiz.quiz_questions[this.index].answer;
   this.contentEdit.open() ;
+  
 }
   }
   
-// This function is used to delete a question for a quiz 
-  deleteQuestion() {
+// This function is used to delete a question for a quiz. We decrease 
+// the index, if it is not zero, after deletion to display another question 
+// to the user. We use the ChangeDetectorRef to detect and apply changes  
+   deleteQuestion() {
     if (this.quiz?.quiz_questions ) {
       this.contentDelete.target = target.question ; 
       this.contentDelete.id = this.quiz.quiz_questions[this.index].id! ; 

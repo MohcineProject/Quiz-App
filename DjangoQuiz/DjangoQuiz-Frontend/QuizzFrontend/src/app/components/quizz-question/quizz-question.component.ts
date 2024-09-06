@@ -12,5 +12,22 @@ import { CommonModule } from '@angular/common';
 })
 export class QuizzQuestionComponent {
   @Input()  question : QuizzQuestion | null = null  ; 
+  selectedOption : String | null = null ;
+
+  checkAnswer(option: string) {
+    if (option === this.question?.answer) {
+      return true;
+    }
+    return false;
+  }
+
+
+  selectOption(option :String) {
+    if(!this.selectedOption)
+    {this.selectedOption = option;
+    setTimeout(() => {
+      this.selectedOption = null 
+    }, 3000)}
+  }
 
 }

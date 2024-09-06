@@ -1,43 +1,62 @@
 <ng-template #content let-modal>
     <div class="modal-header">
-        <h4> Create a new Question for the quiz </h4>
+        <h4>Create a new Question for the quiz</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">&times;</button>
     </div>
     <div class="modal-body">
         <form>
-        <div class="mb-3">
-            <label for="question"> Question: </label>
-            <input type="text" class="form-control" id="question" name="question" [(ngModel)]="question" />
-        </div>
-        <div class="mb-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6 mb-3">
-                        <label for="option1"> Add option 1 </label>
-                        <input type="text" id="option1" name="option1" class="form-control" [(ngModel)]="option1" required />
+            <div class="mb-3">
+                <label for="question">Question:</label>
+                <input type="text" class="form-control" id="question" name="question" [(ngModel)]="question" />
+            </div>
+            <div class="mb-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label for="option1">Add option 1</label>
+                            <div class="d-flex justify-content-between">
+                                <input type="text" id="option1" name="option1" class="form-control" [(ngModel)]="option1" required />
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="isCorrect1" name="isCorrect" [(ngModel)]="correctOption" [value]="'option1'" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="option2">Add option 2</label>
+                            <div class="d-flex justify-content-between">
+                                <input type="text" id="option2" name="option2" class="form-control" [(ngModel)]="option2" required />
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="isCorrect2" name="isCorrect" [(ngModel)]="correctOption" [value]="'option2'" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-6 mb-3">
-                        <label for="option2"> Add option 2 </label>
-                        <input type="text" id="option2" name="option2" class="form-control" [(ngModel)]="option2" required />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6 mb-3">
-                        <label for="option3"> Add option 3 </label>
-                        <input type="text" id="option3" name="option3" class="form-control" [(ngModel)]="option3" required />
-                    </div>
-                    <div class="col-6 mb-3">
-                        <label for="option4"> Add option 4 </label>
-                        <input type="text" id="option4" name="option4" class="form-control" [(ngModel)]="option4" required />
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label for="option3">Add option 3</label>
+                            <div class="d-flex justify-content-between">
+                                <input type="text" id="option3" name="option3" class="form-control" [(ngModel)]="option3" required />
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="isCorrect3" name="isCorrect" [(ngModel)]="correctOption" [value]="'option3'" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="option4">Add option 4</label>
+                            <div class="d-flex justify-content-between">
+                                <input type="text" id="option4" name="option4" class="form-control" [(ngModel)]="option4" required />
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="isCorrect4" name="isCorrect" [(ngModel)]="correctOption" [value]="'option4'" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <button type="submit" (click)="submit()" class="btn btn-primary"> Save </button>
-    </form>
+            <button type="submit" (click)="submit()" class="btn btn-primary">Save</button>
+        </form>
     </div>
     <div class="modal-footer">
-
-        <button type = "button" class = "btn btn-outline-dark" (click)="modal.dismiss('Close click')">Close</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Close click')">Close</button>
     </div>
 </ng-template>
