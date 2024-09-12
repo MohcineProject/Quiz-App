@@ -17,7 +17,7 @@ export class EditQuestionComponent {
   option2! : String ; 
   option3! : String ; 
   option4! : String ; 
- correctOption! : String ;
+ correctOption! : String ; 
  questionId! : number ; 
   @ViewChild('content') content! : TemplateRef<any>;
 

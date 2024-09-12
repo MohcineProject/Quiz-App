@@ -18,8 +18,10 @@
     "@angular/platform-browser": "^17.3.10",
     "@angular/platform-browser-dynamic": "^17.3.10",
     "@angular/router": "^17.3.10",
-    "@ng-bootstrap/ng-bootstrap": "*", 
+    "@ng-bootstrap/ng-bootstrap": "*",
+    "quizz-frontend": "file:",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.13.3",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
