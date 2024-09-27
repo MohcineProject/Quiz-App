@@ -6,8 +6,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-delete-model',
   standalone: true,
   imports: [],
-  templateUrl: './delete-model.component.html',
-  styleUrl: './delete-model.component.scss'
+  templateUrl: './delete-modal.component.html',
+  styleUrl: './delete-modal.component.scss'
 })
 export class DeleteModelComponent {
 

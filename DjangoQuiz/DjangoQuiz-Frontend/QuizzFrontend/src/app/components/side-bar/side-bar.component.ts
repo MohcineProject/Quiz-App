@@ -3,7 +3,7 @@ import { QuizServiceService } from '../../services/quiz-service.service';
 import { quizz } from '../../interfaces/quizz';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from '../../Modals/modal/modal.component';
-import { DeleteModelComponent, target } from '../../Modals/delete-model/delete-model.component';
+import { DeleteModelComponent, target } from '../../Modals/delete-modal/delete-modal.component';
 import { EditQuizModalComponent } from '../../Modals/edit-quiz-modal/edit-quiz-modal.component';
 
 @Component({

@@ -1,3 +1,4 @@
+from django.db import connection
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import viewsets
@@ -97,3 +98,32 @@ class QuizViewSet(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
     
     
+def auth(request):
+    sessionId =request.headers['Authorization']
+    with connection as conn:
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM sessions WHERE session_id = '{sessionId}'")
+        if cursor.rowcount == 0 :
+            return Response({"message": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
+        else : 
+            return Response({"message": "Authorized"}, status=status.HTTP_200_OK) 
+
+
+
+def login(request) : 
+    password = request.data.get('password') 
+    email = request.get("email") 
+    if password is None or email is None : 
+        return Response({"message" :"Password or email are missing"} , status=status.HTTP_400_BAD_REQUEST)
+    with connection.cursor()as cursor : 
+        cursor.execute(f'SELECT password , emailFROM user WHERE email ="{email}"') 
+        if cursor.rowcount == 0 : 
+            return Response({"message" : "User not found"} , status=status.HTTP_404_NOT_FOUND)
+        user = cursor.fetchone()
+        if user[2] != password :
+            return Response({"message" : "There was an error in your credentials"} , status=status.HTTP_401_UNAUTHORIZED)
+        else : 
+            import uuid
+            session_id = uuid.uuid4()
+            cursor.execute(f'INSERT INTO sessions (session_id, user_id) VALUES ("{session_id}" , "{user[0]}")')
+            return Response({"message" : "authorized"} , headers={"Authorization" : session_id} , status=status.HTTP_200_OK)

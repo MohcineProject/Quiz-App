@@ -5,7 +5,7 @@ import { QuizServiceService } from '../../services/quiz-service.service';
 import { quizz } from '../../interfaces/quizz';
 import { CommonModule } from '@angular/common';
 import { EditQuestionComponent } from '../../Modals/edit-question/edit-question.component';
-import { DeleteModelComponent, target } from '../../Modals/delete-model/delete-model.component';
+import { DeleteModelComponent, target } from '../../Modals/delete-modal/delete-modal.component';
 import { FullscreenService } from '../../services/fullscreen.service';
 
 
